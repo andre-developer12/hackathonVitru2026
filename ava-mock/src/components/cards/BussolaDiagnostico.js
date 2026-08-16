@@ -158,7 +158,7 @@ function renderJulio(aluno, b) {
       <div class="bussola-diag-title">
         <span class="bussola-diag-icon">🧭</span>
         <div>
-          <h3>Aplicação Prática · Pertencimento</h3>
+          <h3>Diagnóstico Bússola</h3>
           <span class="bussola-diag-subtitle">Resultado de ${aluno.nome} · Perfil: <strong>${aluno.persona}</strong></span>
         </div>
       </div>
