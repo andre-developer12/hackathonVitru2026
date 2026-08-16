@@ -1,8 +1,11 @@
-import { pendencias } from '../../data/dashboard.js';
+import { getAlunoAtivo } from '../../state.js';
 
 export function createCardPendencias() {
   const card = document.createElement('div');
   card.className = 'card';
+
+  const aluno = getAlunoAtivo();
+  const pendencias = aluno.pendencias;
 
   card.innerHTML = `
     <div class="card-header">

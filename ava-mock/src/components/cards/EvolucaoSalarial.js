@@ -1,8 +1,11 @@
-import { evolucaoSalarialData } from '../../data/dashboard.js';
+import { getAlunoAtivo } from '../../state.js';
 
 export function createCardEvolucaoSalarial() {
   const card = document.createElement('div');
   card.className = 'card';
+
+  const aluno = getAlunoAtivo();
+  const data = aluno.evolucaoSalarial;
 
   card.innerHTML = `
     <div class="card-header">
@@ -16,9 +19,9 @@ export function createCardEvolucaoSalarial() {
           <span>0%</span>
         </div>
         <div class="salary-area">
-          ${evolucaoSalarialData.semestres.map(s => `
+          ${data.dados.map(s => `
             <div class="salary-bar-container">
-              <div class="salary-bar"></div>
+              <div class="salary-bar" style="height: ${(s.evolucaoAluno / 3) * 100}%"></div>
               <span class="bar-label">${s.periodo}</span>
             </div>
           `).join('')}

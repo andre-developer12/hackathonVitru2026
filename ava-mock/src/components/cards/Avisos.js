@@ -1,8 +1,11 @@
-import { avisos } from '../../data/dashboard.js';
+import { getAlunoAtivo } from '../../state.js';
 
 export function createCardAvisos() {
   const card = document.createElement('div');
   card.className = 'card';
+
+  const aluno = getAlunoAtivo();
+  const avisos = aluno.avisos;
 
   card.innerHTML = `
     <div class="card-header">

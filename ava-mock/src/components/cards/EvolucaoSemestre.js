@@ -1,21 +1,23 @@
 import { createBarChart } from '../charts/BarChart.js';
-import { evolucaoSemestreData } from '../../data/dashboard.js';
+import { getAlunoAtivo } from '../../state.js';
 
 export function createCardEvolucaoSemestre() {
   const card = document.createElement('div');
   card.className = 'card';
 
-  const labels = evolucaoSemestreData.disciplinas.map(d => d.codigo);
+  const aluno = getAlunoAtivo();
+  const data = aluno.evolucaoSemestre;
+  const labels = data.disciplinas.map(d => d.codigo);
 
   card.innerHTML = `
     <div class="card-header">
-      <h3>Evolução Semestre <span class="semester-badge">${evolucaoSemestreData.semestre} ▼</span></h3>
+      <h3>Evolução Semestre <span class="semester-badge">${data.semestre} ▼</span></h3>
     </div>
     <div class="card-body">
-      ${createBarChart(evolucaoSemestreData.disciplinas, labels)}
+      ${createBarChart(data.disciplinas, labels)}
       <div class="chart-info">
-        <p>${evolucaoSemestreData.concluido.toFixed(2)}% concluído</p>
-        <p>${evolucaoSemestreData.aproveitamento.toFixed(2)}% aproveitamento</p>
+        <p>${data.concluido.toFixed(2)}% concluído</p>
+        <p>${data.aproveitamento.toFixed(2)}% aproveitamento</p>
       </div>
     </div>
   `;
