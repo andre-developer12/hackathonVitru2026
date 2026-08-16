@@ -5,8 +5,7 @@ export function createCardEvolucaoSemestre() {
   const card = document.createElement('div');
   card.className = 'card';
 
-  const aluno = getAlunoAtivo();
-  const data = aluno.evolucaoSemestre;
+  const data = getAlunoAtivo().evolucaoSemestre;
   const labels = data.disciplinas.map(d => d.codigo);
 
   card.innerHTML = `

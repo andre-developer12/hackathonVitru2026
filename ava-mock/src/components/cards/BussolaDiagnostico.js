@@ -9,7 +9,6 @@ export function createCardBussolaDiagnostico() {
 
   if (aluno.id === 'julio') {
     card.innerHTML = renderJulio(aluno, b);
-    // Bind chat modal events after render
     setTimeout(() => bindChatEvents(card, b), 0);
   } else {
     card.innerHTML = renderMarina(aluno, b);
@@ -22,7 +21,6 @@ function bindChatEvents(card, b) {
   const overlay = card.querySelector('#chatModalOverlay');
   const closeBtn = card.querySelector('#chatModalClose');
 
-  // Abrir chat ao clicar no contato
   card.querySelectorAll('.contato-card').forEach(el => {
     el.addEventListener('click', () => {
       const idx = parseInt(el.dataset.contato);
@@ -31,14 +29,12 @@ function bindChatEvents(card, b) {
     });
   });
 
-  // Fechar modal
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       overlay.classList.remove('show');
     });
   }
 
-  // Fechar clicando no overlay
   if (overlay) {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) overlay.classList.remove('show');
@@ -57,7 +53,6 @@ function openChatModal(card, contato) {
   nameEl.textContent = contato.nome;
   roleEl.textContent = contato.papel;
 
-  // Conversa mockada por contato
   const conversas = getConversaMock(contato);
   bodyEl.innerHTML = conversas.map(msg => `
     <div class="chat-msg ${msg.de}">
@@ -135,8 +130,14 @@ function renderMarina(aluno, b) {
         <div class="diag-section-block">
           <span class="diag-section-label">🤖 ASSISTENTE DE CARREIRA</span>
           <div class="llm-chat">
-            <div class="llm-bubble bot"><div class="llm-avatar">🤖</div><div class="llm-message"><p>${b.chat_mensagem}</p></div></div>
-            <div class="llm-bubble bot links"><div class="llm-avatar">🤖</div><div class="llm-message">${b.chat_vagas.map(v => `<a href="#" class="llm-vaga-link"><span class="vaga-icon">💼</span><span class="vaga-text">${v}</span></a>`).join('')}</div></div>
+            <div class="llm-bubble bot">
+              <div class="llm-message"><p>${b.chat_mensagem}</p></div>
+              <div class="llm-avatar">🤖</div>
+            </div>
+            <div class="llm-bubble bot links">
+              <div class="llm-message">${b.chat_vagas.map(v => `<a href="#" class="llm-vaga-link"><span class="vaga-icon">💼</span><span class="vaga-text">${v}</span></a>`).join('')}</div>
+              <div class="llm-avatar">🤖</div>
+            </div>
           </div>
         </div>
         <div class="diag-section-block">
@@ -185,7 +186,6 @@ function renderJulio(aluno, b) {
       </div>
     </div>
 
-    <!-- Modal de Chat -->
     <div class="chat-modal-overlay" id="chatModalOverlay">
       <div class="chat-modal">
         <div class="chat-modal-header">

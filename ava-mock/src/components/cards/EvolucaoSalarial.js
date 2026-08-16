@@ -4,8 +4,7 @@ export function createCardEvolucaoSalarial() {
   const card = document.createElement('div');
   card.className = 'card';
 
-  const aluno = getAlunoAtivo();
-  const data = aluno.evolucaoSalarial;
+  const data = getAlunoAtivo().evolucaoSalarial;
 
   card.innerHTML = `
     <div class="card-header">

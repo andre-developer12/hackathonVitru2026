@@ -1,5 +1,3 @@
-// Estado global — aluno ativo e dados mockados por aluno
-
 const alunosData = {
   marina: {
     id: 'marina',
@@ -10,7 +8,6 @@ const alunosData = {
     semestre: 3,
     persona: 'Construtor',
     personaSecundaria: 'Acelerador',
-    // Dashboard data
     evolucaoSemestre: {
       semestre: '2024/2',
       disciplinas: [
@@ -48,7 +45,6 @@ const alunosData = {
       { data: '14/08/2024', texto: 'Abertura de estágio em Operações' },
       { data: '12/08/2024', texto: 'Novo módulo de Gestão de Projetos' },
     ],
-    // Dados da Bússola (resumo para o card grande)
     bussola: {
       realizado: true,
       empresas: ['Ambev', 'Magazine Luiza', 'Nubank', 'iFood', 'Votorantim'],
@@ -84,7 +80,6 @@ const alunosData = {
     semestre: 2,
     persona: 'Explorador',
     personaSecundaria: 'Realizador',
-    // Dashboard data
     evolucaoSemestre: {
       semestre: '2024/2',
       disciplinas: [
@@ -120,10 +115,8 @@ const alunosData = {
       { data: '13/08/2024', texto: 'Palestra: Patrimônio Cultural Digital' },
       { data: '11/08/2024', texto: 'Vagas de estágio em Museus abertas' },
     ],
-    // Dados da Bússola (resumo para o card grande)
     bussola: {
       realizado: true,
-      // Dados específicos do Julio: participação, projetos, contatos
       vantagens: [
         { icone: '🎯', texto: 'Aplicar o que aprende em projetos reais' },
         { icone: '🤝', texto: 'Construir rede com colegas e professores' },
@@ -166,7 +159,6 @@ export function getOutroAluno() {
 
 export function trocarAluno() {
   alunoAtivo = alunoAtivo === 'marina' ? 'julio' : 'marina';
-  // Re-render tudo
   onChangeCallbacks.forEach(cb => cb());
 }
 

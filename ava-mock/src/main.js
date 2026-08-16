@@ -14,21 +14,15 @@ function render() {
   const app = document.getElementById('app');
   app.innerHTML = '';
 
-  // Sidebar
   app.appendChild(createSidebar());
 
-  // Main content
   const main = document.createElement('main');
   main.className = 'main-content';
-
-  // Header (agora com seletor de aluno)
   main.appendChild(createHeader());
 
-  // Dashboard
   const dashboard = document.createElement('div');
   dashboard.className = 'dashboard';
 
-  // Top row - Gráficos (3 cards)
   const topRow = document.createElement('div');
   topRow.className = 'dashboard-row';
   topRow.appendChild(createCardEvolucaoSemestre());
@@ -36,13 +30,11 @@ function render() {
   topRow.appendChild(createCardEvolucaoSalarial());
   dashboard.appendChild(topRow);
 
-  // Card grande central — Diagnóstico Bússola
   const midRow = document.createElement('div');
   midRow.className = 'dashboard-row-full';
   midRow.appendChild(createCardBussolaDiagnostico());
   dashboard.appendChild(midRow);
 
-  // Bottom row - Informações (3 cards)
   const bottomRow = document.createElement('div');
   bottomRow.className = 'dashboard-row';
   bottomRow.appendChild(createCardPendencias());
@@ -54,12 +46,10 @@ function render() {
   app.appendChild(main);
 }
 
-// Re-render quando trocar de aluno
 onAlunoChange(() => render());
 
 document.addEventListener('DOMContentLoaded', () => {
   render();
-  // Dispara questionário obrigatório
   const modal = criarQuestionarioModal();
   if (modal) document.body.appendChild(modal);
 });

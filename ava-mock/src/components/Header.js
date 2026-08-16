@@ -37,35 +37,28 @@ export function createHeader() {
     </div>
   `;
 
-  // Menu toggle
   header.querySelector('#menuToggle').addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('collapsed');
+    document.getElementById('sidebar').classList.toggle('collapsed');
     document.querySelector('.main-content').classList.toggle('expanded');
   });
 
-  // Sair
   header.querySelector('#btnSair').addEventListener('click', () => {
     if (confirm('Deseja realmente sair?')) {
       alert('Sessão encerrada.');
     }
   });
 
-  // Aluno selector toggle
   header.querySelector('#alunoTrigger').addEventListener('click', (e) => {
     e.stopPropagation();
-    const dropdown = header.querySelector('#alunoDropdown');
-    dropdown.classList.toggle('show');
+    header.querySelector('#alunoDropdown').classList.toggle('show');
     header.querySelector('.aluno-arrow').classList.toggle('open');
   });
 
-  // Trocar aluno
   header.querySelector('#trocarAlunoBtn').addEventListener('click', (e) => {
     e.stopPropagation();
     trocarAluno();
   });
 
-  // Fechar dropdown clicando fora
   document.addEventListener('click', () => {
     const dropdown = header.querySelector('#alunoDropdown');
     if (dropdown) {

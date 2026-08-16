@@ -71,10 +71,8 @@ export function criarQuestionarioModal() {
     overlay.querySelectorAll('.escala-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const pergIdx = parseInt(btn.dataset.pergunta);
-        const valor = parseInt(btn.dataset.valor);
-        respostas[pergIdx] = valor;
+        respostas[pergIdx] = parseInt(btn.dataset.valor);
 
-        // Visual: marca selecionado
         const item = overlay.querySelector(`.questionario-item[data-index="${pergIdx}"]`);
         item.querySelectorAll('.escala-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
@@ -100,15 +98,9 @@ function updateProgress(overlay) {
   const respondidas = respostas.filter(r => r !== null).length;
   const pct = (respondidas / 10) * 100;
 
-  // Progress bar
-  const fill = overlay.querySelector('#progressFill');
-  fill.style.width = pct + '%';
+  overlay.querySelector('#progressFill').style.width = pct + '%';
+  overlay.querySelector('#progressCount').textContent = respondidas;
 
-  // Counter
-  const count = overlay.querySelector('#progressCount');
-  count.textContent = respondidas;
-
-  // Aviso + botão
   const btn = overlay.querySelector('#questionarioSubmit');
   const aviso = overlay.querySelector('#questionarioAviso');
 

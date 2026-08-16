@@ -4,8 +4,7 @@ export function createCardPendencias() {
   const card = document.createElement('div');
   card.className = 'card';
 
-  const aluno = getAlunoAtivo();
-  const pendencias = aluno.pendencias;
+  const pendencias = getAlunoAtivo().pendencias;
 
   card.innerHTML = `
     <div class="card-header">
