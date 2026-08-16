@@ -1,6 +1,11 @@
 {
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "framework": null,
-  "rootDirectory": ""
+  "routes": [
+    { "src": "/", "dest": "/ava-mock/index.html" },
+    { "src": "/gestor", "dest": "/ava-mock/gestor.html" },
+    { "src": "/bussola", "dest": "/ava-mock/bussola.html" },
+    { "src": "/gestor.html", "dest": "/ava-mock/gestor.html" },
+    { "src": "/bussola.html", "dest": "/ava-mock/bussola.html" },
+    { "src": "/src/(.*)", "dest": "/ava-mock/src/$1" },
+    { "src": "/styles/(.*)", "dest": "/ava-mock/styles/$1" }
+  ]
 }
